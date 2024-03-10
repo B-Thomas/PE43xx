@@ -93,8 +93,8 @@ void PE43xx::_writeLevel() {
 
     // Write the level out MSB first
     int b;
-    for (int bit = bits; bit >= 0; bit--) {
-        b = ((intlevel << 1) >> bit) & 0x01;
+    for (int bit = bits-1; bit >= 0; bit--) {
+        b = (intlevel >> bit) & 0x01;
 
         digitalWrite(_pin_data, b);
         digitalWrite(_pin_clock, HIGH);
